@@ -1,0 +1,36 @@
+import "math"
+
+function add(a, b) {
+    return [a[0] + b[0], a[1] + b[1]]
+}
+
+function sub(a, b) {
+    return [a[0] - b[0], a[1] - b[1]]
+}
+
+function mul(a, b) {
+    return [
+        a[0] * b[0] - a[1] * b[1],
+        a[0] * b[1] + a[1] * b[0]
+    ]
+}
+
+function inv(a) {
+    create inv = 1 / sq2(a[0], a[1])
+    return [a[0] * inv, - a[1] * inv]
+}
+
+function div(a, b) {
+    return mul(a, inv(b))
+}
+
+function sq2(a, b) {
+    return a * a + b * b
+}
+
+function exp(a) {
+    create ea = math.exp(a[0])
+    return [ea * math.cos(a[1]), ea * math.sin(a[1])]
+}
+
+//view(add(exp([0, math.PI()]), [1, 0]))
