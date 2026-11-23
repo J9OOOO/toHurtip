@@ -1,0 +1,89 @@
+import "math"
+
+function indexOf(array, arg) {
+    create i = 0
+    while(i < array.length) {
+        if (array[i] == arg) {return i}
+        i = i + 1
+    }
+    return -1
+}
+
+function lastIndexOf(array, arg) {
+    create i = array.length - 1
+    while(i >= 0) {
+        if (array[i] == arg) {return i}
+        i = i - 1
+    }
+    return -1
+}
+
+function includes(array, arg) {
+    create i = 0
+    while(i < array.length) {
+        if (array[i] == arg) {return true}
+        i = i + 1
+    }
+    return false
+}
+
+function addArray(array, arg) {
+    create i = 0
+    while(i < array.length) {
+        array[i] = array[i] + arg
+        i = i + 1
+    }
+    return array
+}
+
+function subArray(array, arg) {
+    create i = 0
+    while(i < array.length) {
+        array[i] = array[i] - arg
+        i = i + 1
+    }
+    return array
+}
+
+function mulArray(array, arg) {
+    create i = 0
+    while(i < array.length) {
+        array[i] = array[i] * arg
+        i = i + 1
+    }
+    return array
+}
+
+function divArray(array, arg) {
+    create i = 0
+    while(i < array.length) {
+        array[i] = array[i] / arg
+        i = i + 1
+    }
+    return array
+}
+
+function slice(array, inicio, fim) {
+    create i = inicio
+    create arrayNovo = []
+    while (i <= fim) {
+        arrayNovo.push(array[i])
+        i = i + 1
+    }
+    return arrayNovo
+}
+
+function sliceReverse(array, inicio, fim) {
+    create i = 0
+    create arrayNovo = []
+    while (i < array.length) {
+        if (i < inicio or i > fim) {arrayNovo.push(array[i])}
+        i = i + 1
+    }
+    return arrayNovo
+}
+
+//Hurtip não tem uma estrutura básica para a manipulação de Arrays, então meio que não dá para fazer nada
+//Por enquanto:
+//slice e sliceReverse não funcionam, pois dependem de uma implementação que não existe
+//Ao menos hoje, em 23/11/2026
