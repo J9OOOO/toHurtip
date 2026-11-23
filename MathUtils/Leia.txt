@@ -1,0 +1,179 @@
+Funções:
+
+1. Potências e operações básicas
+
+explodir()
+Provoca uma divisão por zero, utilizada como mecanismo improvisado de interrupção por erro.
+
+p10(a)
+Calcula a décima potência de a.
+
+p2(a)
+Calcula o quadrado de a.
+
+p3(a)
+Calcula o cubo de a.
+
+factorial(n)
+Calcula o fatorial de um inteiro não negativo: (n!).
+
+2. Comparações e propriedades numéricas
+
+isZero(a, eps)
+Verifica se a é aproximadamente zero, considerando uma tolerância eps.
+
+isEqual(a, b, eps)
+Verifica se dois números são aproximadamente iguais, considerando uma tolerância.
+
+isInteger(x)
+Verifica se x é um número inteiro.
+
+isPositive(a)
+Verifica se a é positivo.
+
+isNegative(a)
+Verifica se a é negativo.
+
+clamp(a, min, max)
+Restringe a ao intervalo definido por min e max.
+
+sign(a)
+Retorna o sinal de a: -1, 0 ou 1.
+
+3. Geometria
+
+distance2D(x1, y1, x2, y2)
+Calcula a distância euclidiana entre dois pontos no plano cartesiano.
+
+distance3D(x1, y1, z1, x2, y2, z2)
+Calcula a distância euclidiana entre dois pontos no espaço tridimensional.
+
+circleArea(r)
+Calcula a área de um círculo de raio r.
+
+circlePerimeter(r)
+Calcula o comprimento da circunferência de raio r.
+
+sphereVolume(r)
+Calcula o volume de uma esfera de raio r.
+
+sphereArea(r)
+Calcula a área superficial de uma esfera de raio r.
+
+triangleArea(base, height)
+Calcula a área de um triângulo a partir da base e da altura.
+
+regularPolygonPerimeter(n, r)
+Calcula o perímetro de um polígono regular de n lados inscrito em uma circunferência de raio r.
+
+regularPolygonArea(n, r)
+Calcula a área do mesmo tipo de polígono regular.
+
+4. Conversões angulares
+
+toRad(deg)
+Converte um ângulo de graus para radianos.
+
+toDeg(rad)
+Converte um ângulo de radianos para graus.
+
+5. Porcentagem e interpolação
+
+percent(a, b)
+Calcula quanto a representa percentualmente de b.
+
+percentageChange(old, new)
+Calcula a variação percentual entre um valor antigo e um novo.
+
+lerp(a, b, t)
+Realiza interpolação linear entre a e b, utilizando o parâmetro t.
+
+normalize(a, min, max)
+Normaliza um valor em relação a um intervalo, produzindo uma escala de 0 a 1 quando a está dentro dele.
+
+6. Funções trigonométricas recíprocas
+
+csc(x)
+Calcula a cosecante de x: (1/\sin(x)).
+
+sec(x)
+Calcula a secante de x: (1/\cos(x)).
+
+cot(x)
+Calcula a cotangente de x: (1/\tan(x)).
+
+7. Funções hiperbólicas recíprocas
+
+csch(x)
+Calcula a cossecante hiperbólica: (1/\sinh(x)).
+
+sech(x)
+Calcula a secante hiperbólica: (1/\cosh(x)).
+
+coth(x)
+Calcula a cotangente hiperbólica: (1/\tanh(x)).
+
+8. Funções trigonométricas inversas recíprocas
+
+acsc(x)
+Calcula a arcocossecante: (\arcsin(1/x)).
+
+asec(x)
+Calcula a arcosecante: (\arccos(1/x)).
+
+acot(x)
+Calcula a arcocotangente pela identidade (\arctan(1/x)).
+
+9. Funções hiperbólicas inversas recíprocas
+
+acsch(x)
+Calcula a arcocossecante hiperbólica: (\operatorname{asinh}(1/x)).
+
+asech(x)
+Calcula a arcosecante hiperbólica: (\operatorname{acosh}(1/x)).
+
+acoth(x)
+Calcula a arcocotangente hiperbólica: (\operatorname{atanh}(1/x)).
+
+10. Geometria analítica
+
+linearEquation(x1, y1, x2, y2)
+Determina os coeficientes angular e linear da reta que passa por dois pontos distintos. Retorna [m, b], representando (y=mx+b).
+
+angleOfEqLinear(m)
+Calcula o ângulo de inclinação de uma reta a partir de seu coeficiente angular. O resultado é dado em radianos.
+
+11. Conversões de unidades
+
+kmToMiles(km)
+Converte quilômetros para milhas.
+
+milesToKm(miles)
+Converte milhas para quilômetros.
+
+celsiusToFahrenheit(c)
+Converte graus Celsius para Fahrenheit.
+
+fahrenheitToCelsius(f)
+Converte graus Fahrenheit para Celsius.
+
+12. Equações quadráticas
+
+quadraticDiscriminant(a, b, c)
+Calcula o discriminante de uma equação quadrática: (\Delta=b^2-4ac).
+
+quadraticRoot1(a, b, c)
+Calcula a primeira raiz pela fórmula de Bhaskara, utilizando o sinal positivo.
+
+quadraticRoot2(a, b, c)
+Calcula a segunda raiz pela fórmula de Bhaskara, utilizando o sinal negativo.
+
+As funções de raízes pressupõem uma equação quadrática com (a\neq0) e discriminante não negativo.
+
+13. Equações cúbicas
+
+depressedCubicDiscriminant(p, q)
+Calcula o discriminante de Cardano para a cúbica deprimida (x^3+px+q=0).
+
+CubicRoot(p, q)
+Calcula uma raiz real da cúbica deprimida utilizando a fórmula de Cardano, quando o discriminante é não negativo.
