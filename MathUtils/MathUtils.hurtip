@@ -1,0 +1,258 @@
+import "math"
+
+//Biblioteca útil de matemática
+
+function explodir() {
+	return 1 / 0
+}
+
+function p10(a) {
+	return math.pow(a, 10)
+}
+
+function p2(a) {
+    return math.pow(a, 2)
+}
+
+function p3(a) {
+    return math.pow(a, 3)
+}
+
+function factorial(n) {
+	if (n < 0) {
+		view("n! para n < 0 não é válido")
+		explodir()
+	}
+	if (not isInteger(n)) {
+		view("n! para n não inteiro não é válido")
+		explodir()
+	}
+
+    create result = 1
+    create i = 2
+
+    while (i <= n) {
+        result = result * i
+        i = i + 1
+    }
+
+    return result
+}
+
+function isZero(a, eps) {
+    return math.abs(a) <= eps
+}
+
+function isEqual(a, b, eps) {
+    return math.abs(a - b) <= eps
+}
+
+function isInteger(x) {
+    return math.floor(x) == x
+}
+
+function isPositive(a) {
+    return a > 0
+}
+
+function isNegative(a) {
+    return a < 0
+}
+
+function clamp(a, min, max) {
+	if (min > max) {
+		view("min não pode ser maior que max")
+		explodir()
+	}
+    if (a < min) {return min}
+    if (a > max) {return max}
+    return a
+}
+
+function sign(a) {
+    if (a > 0) {return 1}
+    if (a < 0) {return -1}
+    return 0
+}
+
+function distance2D(x1, y1, x2, y2) {
+    return math.hypot(x2 - x1, y2 - y1)
+}
+
+function distance3D(x1, y1, z1, x2, y2, z2) {
+    return math.sqrt(p2(x2 - x1) + p2(y2 - y1) + p2(z2 - z1))
+}
+
+function circleArea(r) {
+    return math.PI() * r * r
+}
+
+function circlePerimeter(r) {
+    return 2 * math.PI() * r
+}
+
+function sphereVolume(r) {
+    return 4 * math.PI() * p3(r) / 3
+}
+
+function sphereArea(r) {
+    return 4 * math.PI() * r * r
+}
+
+function triangleArea(base, height) {
+    return base * height / 2
+}
+
+
+
+function toRad(deg) {
+    return deg * math.PI() / 180
+}
+
+function toDeg(rad) {
+    return rad * 180 / math.PI()
+}
+
+function percent(a, b) {
+    return 100 * a / b
+}
+
+function percentageChange(old, new) {
+    return 100 * (new - old) / old
+}
+
+function lerp(a, b, t) {
+    return a + (b - a) * t
+}
+
+function normalize(a, min, max) {
+    return (a - min) / (max - min)
+}
+
+function csc(x) {
+	return 1 / math.sin(x)
+}
+
+function sec(x) {
+	return 1 / math.cos(x)
+}
+
+function cot(x) {
+	return 1 / math.tan(x)
+}
+
+function csch(x) {
+	return 1 / math.sinh(x)
+}
+
+function sech(x) {
+	return 1 / math.cosh(x)
+}
+
+function coth(x) {
+	return 1 / math.tanh(x)
+}
+
+
+function acsc(x) {
+	return math.asin(1 / x)
+}
+
+function asec(x) {
+	return math.acos(1 / x)
+}
+
+function acot(x) {
+	return math.atan(1 / x)
+}
+
+function acsch(x) {
+	return math.asinh(1 / x)
+}
+
+function asech(x) {
+	return math.acosh(1 / x)
+}
+
+function acoth(x) {
+	return math.atanh(1 / x)
+}
+
+
+function regularPolygonPerimeter(n, r) {
+	if (not isInteger(n) or n < 3) {
+		view("n precisa ser um inteiro maior ou igual a 3")
+		explodir()
+	}
+    return 2 * n * r * math.sin(math.PI() / n)
+}
+
+function regularPolygonArea(n, r) {
+	if (not isInteger(n) or n < 3) {
+		view("n precisa ser um inteiro maior ou igual a 3")
+		explodir()
+	}
+    return n * r * r * math.sin(2 * math.PI() / n) / 2
+}
+
+function linearEquation(x1, y1, x2, y2) {
+    if (x1 == x2) {
+        view("Os pontos formam uma reta vertical")
+        explodir()
+    }
+
+    create m = (y2 - y1) / (x2 - x1)
+    create b = y1 - m * x1
+
+    return [m, b]
+}
+
+function angleOfEqLinear(m) {
+	return math.atan(m)
+}
+
+
+
+function kmToMiles(km) {
+    return km / 1.609344
+}
+
+function milesToKm(miles) {
+    return miles * 1.609344
+}
+
+function celsiusToFahrenheit(c) {
+    return c * 9 / 5 + 32
+}
+
+function fahrenheitToCelsius(f) {
+    return (f - 32) * 5 / 9
+}
+
+
+function quadraticDiscriminant(a, b, c) {
+    return b * b - 4 * a * c
+}
+
+function quadraticRoot1(a, b, c) {
+    create d = quadraticDiscriminant(a, b, c)
+    return (-b + math.sqrt(d)) / (2 * a)
+}
+
+function quadraticRoot2(a, b, c) {
+    create d = quadraticDiscriminant(a, b, c)
+    return (-b - math.sqrt(d)) / (2 * a)
+}
+
+function depressedCubicDiscriminant(p, q) {
+	return math.pow(q, 2) / 4 + math.pow(p, 3) / 27
+}
+
+function CubicRoot(p, q) {
+	create Delta = depressedCubicDiscriminant(p, q)
+	if (Delta < 0) {
+		view("O caso tem 3 raízes, porém passa pelo plano complexo")
+		explodir()
+	}
+	return math.cbrt(- q / 2 + math.sqrt(Delta)) + math.cbrt(- q / 2 - math.sqrt(Delta))
+}
