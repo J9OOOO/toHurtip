@@ -1,0 +1,15 @@
+load "Objetos.hurtip" as obj
+
+create ZERO = obj.objectCreate(["real", "imag"], [0, 0])
+
+function Co(real, imag) {
+    return obj.objectCreate(["real", "imag"], [real, imag])
+}
+
+function add(z, w) {
+    return Co(obj.val(z, "real") + obj.val(w, "real"), obj.val(z, "imag") + obj.val(w, "imag"))
+}
+
+function sub(z, w) {
+    return Co(obj.val(z, "real") - obj.val(w, "real"), obj.val(z, "imag") - obj.val(w, "imag"))
+}
