@@ -1,0 +1,107 @@
+load "Arrays.hurtip" as Array
+
+function explodir() {
+    return 1 / 0
+}
+
+function objectCreate(nomes, valores) {
+    if (nomes.length != valores.length) {
+        view("Objeto inválido")
+        explodir()
+    }
+    if (Array.includes(nomes, "NotAProp")){
+        view("Há um nome inválido inválido")
+        explodir()
+    }
+    create i = 0
+    create j = 0
+    create Obj = []
+    while(i < 2 * nomes.length) {
+        Obj[i] = nomes[j]
+        Obj[i + 1] = valores[j]
+        i = i + 2
+        j = j + 1
+    }
+    return Obj
+}
+
+function val(obj, nome) {
+    if (nome == "NotAProp") {
+        view("Nome inválido")
+        explodir()
+    }
+    create i = 0
+    while(i < obj.length) {
+        if (obj[i] == nome) {
+            return obj[i + 1]
+        }
+        i = i + 2
+    }
+    view("Não existe valor para: ", nome)
+    explodir()
+}
+
+function exists(obj, nome) {
+    create i = 0
+    while(i < obj.length) {
+        if (obj[i] == nome) {return true}
+        i = i + 2
+    }
+    return false
+}
+
+function mutVal(obj, nome, valor) {
+    create lugar = posNome(obj, nome)
+    obj[lugar + 1] = valor
+}
+
+function mutProp(obj, nome, nomeNovo) {
+    create lugar = posNome(obj, nome)
+    obj[lugar] = nomeNovo
+}
+
+function posNome(obj, nome) {
+    create i = 0
+    while(i < obj.length) {
+        if (obj[i] == nome) {return i}
+        i = i + 2
+    }
+    return -1
+}
+
+function addProp(obj, nome, valor) {
+    if (nome == "NotAProp") {
+        view("Nome inválido")
+        explodir()
+    }
+    create tamanho = obj.length
+    obj[tamanho] = nome
+    obj[tamanho + 1] = valor
+}
+
+function removeProp(obj, nome) {
+    create lugar = posNome(obj, nome)
+    obj[lugar] = "NotAProp"
+}
+
+function copy(obj) {
+    create i = 0
+    create objNovo = []
+    while (i < obj.length) {
+        objNovo[i] = obj[i]
+    }
+    return objNovo
+}
+
+function print(obj) {
+    create i = 0
+    view("{")
+    while (i < obj.length) {
+        if (obj[i] == "NotAProp") {i = i + 2}
+        view(obj[i], ":", obj[i + 1])
+        i = i + 2
+    }
+    view("}")
+}
+
+//create z = objectCreate(["real", "imag"], [2, 3])
