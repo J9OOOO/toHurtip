@@ -67,7 +67,7 @@ function slice(array, inicio, fim) {
     create i = inicio
     create arrayNovo = []
     while (i <= fim) {
-        arrayNovo.push(array[i])
+        arrayNovo[arrayNovo.length] = (array[i])
         i = i + 1
     }
     return arrayNovo
@@ -77,13 +77,65 @@ function sliceReverse(array, inicio, fim) {
     create i = 0
     create arrayNovo = []
     while (i < array.length) {
-        if (i < inicio or i > fim) {arrayNovo.push(array[i])}
+        if (i < inicio or i > fim) {arrayNovo[arrayNovo.length] = (array[i])}
         i = i + 1
     }
     return arrayNovo
 }
 
-//Hurtip não tem uma estrutura básica para a manipulação de Arrays, então meio que não dá para fazer nada a mais que isso
-//Por enquanto:
-//slice e sliceReverse não funcionam, pois dependem de uma implementação que não existe
-//Ao menos hoje, em 23/11/2026
+function sum(array) {
+    create i = 0
+    create s = 0
+    while(i < array.length) {
+        s = s + array[i]
+        i = i + 1
+    }
+    return s
+}
+
+function median(array) {
+    return sum(array) / array.length
+}
+
+function dam(array) {
+    create s = 0
+    create i = 0
+    create med = median(array)
+    while(i < array.length) {
+        s = s + math.abs(med - array[i])
+        i = i + 1
+    }
+    return s
+}
+
+function var(array) {
+    create s = 0
+    create i = 0
+    create med = median(array)
+    while(i < array.length) {
+        s = s + math.pow(math.abs(med - array[i]), 2)
+        i = i + 1
+    }
+    return s
+}
+
+function reverse(array) {
+    create i = 0
+    create arrayNovo = []
+    while(i < array.length) {
+        arrayNovo[i] = array[array.length - i - 1]
+        i = i + 1
+    }
+    return arrayNovo
+}
+
+function nada() {
+    create i = 0
+    while(i < array.length) {
+
+        i = i + 1
+    }
+}
+
+//Hurtip não tem uma estrutura básica para a manipulação de Arrays, mas eu corrigi a atribuição de índices, agora dá para fazer mais coisa
+//Eu tive que mexer numa parte do arquivo do interpretador, em duas na real, aí eu consegui permitir isso
