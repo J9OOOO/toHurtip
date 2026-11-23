@@ -63,8 +63,8 @@ function tan(a) {
     return div(sin(a), cos(a))
 }
 
-function r(a) {
-    return [math.logHypot(a[0], a[1]), 0]
+function R(a) {
+    return [math.Hypot(a[0], a[1]), 0]
 }
 
 function theta(a) {
@@ -72,7 +72,7 @@ function theta(a) {
 }
 
 function ln(a) {
-    return [r(a)[0], theta(a)[0]]
+    return [math.logHypot(a[0], a[1]), theta(a)[0]]
 }
 
 function i(a) {
@@ -193,12 +193,4 @@ function log(a) {
 
 function sqrtX_ONE(a) {
     return sqrt(sub(pow(a, [2, 0]), [1, 0]))
-}
-
-function a(f, x) {
-    return f(x)
-}
-
-function f(x) {
-    return x
 }
