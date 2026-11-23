@@ -1,0 +1,35 @@
+Função:
+explodir()	Provoca uma falha de execução para interromper operações inválidas.
+
+objectCreate(nomes, valores)	
+Cria um objeto a partir de dois arrays: um contendo os nomes das propriedades e outro contendo seus respectivos valores. Verifica tamanhos diferentes, nomes inválidos e duplicados.
+
+val(obj, nome)	
+Retorna o valor associado à propriedade especificada.
+
+exists(obj, nome)	
+Verifica se uma propriedade existe no objeto, retornando true ou false.
+
+mutVal(obj, nome, valor)	
+Modifica o valor associado a uma propriedade existente.
+
+mutProp(obj, nome, nomeNovo)	
+Altera o nome de uma propriedade existente, preservando seu valor.
+
+posNome(obj, nome)	
+Retorna o índice em que uma propriedade está armazenada. Retorna -1 caso não seja encontrada.
+
+addProp(obj, nome, valor)	
+Adiciona uma nova propriedade ao objeto, associando um nome a um valor.
+
+removeProp(obj, nome)	
+Remove logicamente uma propriedade, substituindo seu nome por NotAProp, sem deslocar os demais elementos.
+
+copy(obj)	
+Cria uma cópia da estrutura do objeto, preservando suas propriedades e valores.
+
+verificar(a)	
+Verifica se um identificador é válido, impedindo o uso do nome reservado NotAProp.
+
+print(obj)	
+Exibe o objeto em formato textual, ignorando propriedades removidas.
