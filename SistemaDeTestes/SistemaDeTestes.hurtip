@@ -1,0 +1,20 @@
+import "math"
+
+view("O erro de divisão por 0 é proposital quando um teste falha")
+view("")
+view("")
+view("")
+
+function explodir() {
+    return 1 / 0
+}
+
+function comparar(a, b, eps, nome) {
+    if (math.abs(a - b) > eps) {
+        view("Erro em: ", nome)
+        explodir()
+    }
+    view("'", nome, "'", " concluído com sucesso")
+}
+
+//comparar(1, 1, math.pow(10, -5), "teste")
