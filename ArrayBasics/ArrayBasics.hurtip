@@ -83,7 +83,7 @@ function sliceReverse(array, inicio, fim) {
     return arrayNovo
 }
 
-//Hurtip não tem uma estrutura básica para a manipulação de Arrays, então meio que não dá para fazer nada
+//Hurtip não tem uma estrutura básica para a manipulação de Arrays, então meio que não dá para fazer nada a mais que isso
 //Por enquanto:
 //slice e sliceReverse não funcionam, pois dependem de uma implementação que não existe
 //Ao menos hoje, em 23/11/2026
