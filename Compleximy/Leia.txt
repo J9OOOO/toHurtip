@@ -1,0 +1,59 @@
+# Funções
+
+## Operações aritméticas
+- a + b : `add(a, b)`
+- a - b : `sub(a, b)`
+- a * b : `mul(a, b)`
+- a / b : `div(a, b)`
+- 1 / a : `inv(a)`
+- -a : `neg(a)`
+- conj(a) : `conj(a)`
+
+## Operações auxiliares
+- a² + b² : `sq2(a, b)`
+- arg(a) : `theta(a)`
+- |a| : `r(a)`
+- √(a² + 1) : `hypot(a)`
+- i(a) : rotação de +90°
+- in(a) : rotação de -90°
+
+## Exponenciais e logaritmos
+- eᵃ : `exp(a)`
+- ln(a) : `ln(a)`
+- log₁₀(a) : `log(a)`
+- log_b(a) : `logn(a, b)`
+- aᵇ : `pow(a, b)`
+- ⁿ√a : `nrt(a, n)`
+- √a : `sqrt(a)`
+
+## Trigonométricas
+- sin(a) : `sin(a)`
+- cos(a) : `cos(a)`
+- tan(a) : `tan(a)`
+- csc(a) : `csc(a)`
+- sec(a) : `sec(a)`
+- cot(a) : `cot(a)`
+
+## Trigonométricas inversas
+- arcsin(a) : `asin(a)`
+- arccos(a) : `acos(a)`
+- arctan(a) : `atan(a)`
+- arccsc(a) : `acsc(a)`
+- arcsec(a) : `asec(a)`
+- arccot(a) : `acot(a)`
+
+## Hiperbólicas
+- sinh(a) : `sinh(a)`
+- cosh(a) : `cosh(a)`
+- tanh(a) : `tanh(a)`
+- csch(a) : `csch(a)`
+- sech(a) : `sech(a)`
+- coth(a) : `coth(a)`
+
+## Hiperbólicas inversas
+- arsinh(a) : `asinh(a)`
+- arcosh(a) : `acosh(a)`
+- artanh(a) : `atanh(a)`
+- arcsch(a) : `acsch(a)`
+- arsech(a) : `asech(a)`
+- arcoth(a) : `acoth(a)`
