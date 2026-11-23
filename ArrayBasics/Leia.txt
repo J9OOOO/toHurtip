@@ -7,3 +7,11 @@ mulArray (tudo é multiplicado pelo argumento)
 divArray (tudo é dividido pelo argumento)
 slice
 sliceReverse (meio que um A - A interceção intervalo)
+dup (se o argumento está duplicado lá)
+someDup (se algum valor do Array está duplicado)
+push
+pop
+pushMut (push mutável)
+reverse
+var (variância)
+dam (desvio médio absoluto)
