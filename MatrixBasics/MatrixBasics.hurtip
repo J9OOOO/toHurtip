@@ -1,8 +1,6 @@
 load "Arrays.hurtip" as Array
 load "Utils.hurtip" as Util
 
-//Esses "loads" podem falhar se o sistema de carregamento for apenas na pasta em que está os arquivos, mas aí é só corrigir
-
 function explodir() {
     return 1 / 0
 }
@@ -78,6 +76,240 @@ function MatrixAdd(a, b) {
     return c
 }
 
+function MatrixSub(a, b) {
+    if (a.length != b.length) {
+        view("Matrizes de tamanho diferente")
+        explodir()
+    }
+    create i = 0
+    create j = 0
+
+    create c = MatrixCreate(a.length)
+
+    while(i < a.length) {
+        j = 0
+
+        while(j < a.length) {
+            c[i][j] = a[i][j] - b[i][j]
+            j = j + 1
+        }
+
+        i = i + 1
+    }
+
+    return c
+}
+
+function MatrixMul(a, b) {
+    create n = a.length
+    create result = MatrixCreate(n)
+
+    create i = 0
+    create j = 0
+    create k = 0
+    create soma = 0
+
+    while(i < n) {
+        j = 0
+        while(j < n) {
+            soma = 0
+            k = 0
+
+            while(k < n) {
+                soma = soma + a[i][k] * b[k][j]
+                k = k + 1
+            }
+
+            result[i][j] = soma
+            j = j + 1
+        }
+        i = i + 1
+    }
+
+    return result
+}
+
+function MatrixAdd1D(matrix, arg) {
+    create i = 0
+    create j = 0
+    create c = MatrixCreate(matrix.length)
+
+    while(i < matrix.length) {
+        j = 0
+        while(j < matrix.length) {
+            c[i][j] = matrix[i][j] + arg
+            j = j + 1
+        }
+        i = i + 1
+    }
+
+    return c
+}
+
+function MatrixSub1D(matrix, arg) {
+    create i = 0
+    create j = 0
+    create c = MatrixCreate(matrix.length)
+
+    while(i < matrix.length) {
+        j = 0
+        while(j < matrix.length) {
+            c[i][j] = matrix[i][j] - arg
+            j = j + 1
+        }
+        i = i + 1
+    }
+
+    return c
+}
+
+function MatrixMul1D(matrix, arg) {
+    create i = 0
+    create j = 0
+    create c = MatrixCreate(matrix.length)
+
+    while(i < matrix.length) {
+        j = 0
+        while(j < matrix.length) {
+            c[i][j] = matrix[i][j] * arg
+            j = j + 1
+        }
+        i = i + 1
+    }
+
+    return c
+}
+
+function MatrixDiv1D(matrix, arg) {
+    create i = 0
+    create j = 0
+    create c = MatrixCreate(matrix.length)
+
+    while(i < matrix.length) {
+        j = 0
+        while(j < matrix.length) {
+            c[i][j] = matrix[i][j] / arg
+            j = j + 1
+        }
+        i = i + 1
+    }
+
+    return c
+}
+
+function MatrixDet(matrix) {
+    create n = matrix.length
+
+    if(n == 1) {
+        return matrix[0][0]
+    }
+
+    if(n == 2) {
+        return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+    }
+
+    create det = 0
+    create j = 0
+
+    while(j < n) {
+        if(math.mod(j, 2) == 0) {
+            det = det + matrix[0][j] * MatrixDet(MatrixMinor(matrix, j))
+        } else {
+            det = det - matrix[0][j] * MatrixDet(MatrixMinor(matrix, j))
+        }
+
+        j = j + 1
+    }
+
+    return det
+}
+
+function MatrixMinor(matrix, coluna) {
+    create n = matrix.length
+    create minor = MatrixCreate(n - 1)
+
+    create i = 1
+    create j = 0
+    create k = 0
+
+    while(i < n) {
+        j = 0
+        while(j < n) {
+            if(j != coluna) {
+                minor[k][j - (j > coluna)] = matrix[i][j]
+            }
+            j = j + 1
+        }
+        i = i + 1
+        k = k + 1
+    }
+
+    return minor
+}
+
+function MatrixAdj(matrix) {
+    create n = matrix.length
+    create adj = MatrixCreate(n)
+
+    create i = 0
+    create j = 0
+    create r = 0
+    create c = 0
+    create minor = []
+    create sinal = 1
+
+    while(i < n) {
+        j = 0
+
+        while(j < n) {
+            minor = MatrixCreate(n - 1)
+
+            r = 0
+            create x = 0
+
+            while(x < n) {
+                if(x != i) {
+                    c = 0
+                    create y = 0
+
+                    while(y < n) {
+                        if(y != j) {
+                            minor[r][c] = matrix[x][y]
+                            c = c + 1
+                        }
+                        y = y + 1
+                    }
+
+                    r = r + 1
+                }
+                x = x + 1
+            }
+
+            if(math.mod((i + j), 2) == 0) {
+                sinal = 1
+            } else {
+                sinal = -1
+            }
+
+            adj[j][i] = sinal * MatrixDet(minor)
+
+            j = j + 1
+        }
+
+        i = i + 1
+    }
+
+    return adj
+}
+
+function MatrixInv(matrix) {
+    return MatrixDiv1D(MatrixAdj(matrix), MatrixDet(matrix))
+}
+
+function MatrixDiv(a, b) {
+    return MatrixMul(a, MatrixInv(b))
+}
+
 function MatrixC(b) {
     if (not Util.isInteger(math.sqrt(b.length))) {
         view("Tamanho inválido")
@@ -86,3 +318,7 @@ function MatrixC(b) {
     create Matrix = MatrixCreate(math.sqrt(b.length))
     return MatrixDef(Matrix, b)
 }
+
+//view(MatrixDiv(MatrixC([1, 2, 3, 4]), MatrixC([2, 0, 0, 2])))
+
+//Não me pergunte o que isso signifique
