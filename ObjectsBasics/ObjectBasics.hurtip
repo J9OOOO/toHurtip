@@ -13,6 +13,10 @@ function objectCreate(nomes, valores) {
         view("Há um nome inválido inválido")
         explodir()
     }
+    if (Array.someDup(nomes)) {
+        view("Há valores duplicados")
+        explodir()
+    }
     create i = 0
     create j = 0
     create Obj = []
@@ -51,11 +55,20 @@ function exists(obj, nome) {
 }
 
 function mutVal(obj, nome, valor) {
+    if (nome == "NotAProp") {
+        view("Nome inválido")
+        explodir()
+    }
     create lugar = posNome(obj, nome)
     obj[lugar + 1] = valor
 }
 
 function mutProp(obj, nome, nomeNovo) {
+    verificar(nome)
+    if (Array.includes(obj, nome)) {
+        view("Já existe algo com esse nome")
+        explodir()
+    }
     create lugar = posNome(obj, nome)
     obj[lugar] = nomeNovo
 }
@@ -70,10 +83,7 @@ function posNome(obj, nome) {
 }
 
 function addProp(obj, nome, valor) {
-    if (nome == "NotAProp") {
-        view("Nome inválido")
-        explodir()
-    }
+    verificar(nome)
     create tamanho = obj.length
     obj[tamanho] = nome
     obj[tamanho + 1] = valor
@@ -88,9 +98,18 @@ function copy(obj) {
     create i = 0
     create objNovo = []
     while (i < obj.length) {
+        if (obj[i] == "NotAProp") {i = i + 2}
         objNovo[i] = obj[i]
+        i = i + 1
     }
     return objNovo
+}
+
+function verificar(a) {
+    if (nome == "NotAProp") {
+        view("Nome inválido")
+        explodir()
+    }
 }
 
 function print(obj) {
