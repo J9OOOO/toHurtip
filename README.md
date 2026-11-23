@@ -1,2 +1,2 @@
-# Compleximy-Hurpit
-Uma biblioteca de números complexos na linguagem brasileira Hurpit
+# toHurtip
+Várias bibliotecas matemáticas ou para outros fins para a linguagem brasileira Hurtip
