@@ -1,0 +1,204 @@
+import "math"
+
+create I = [0, 1]
+create MINUS_I = [0, -1]
+create ONE = [1, 0]
+create MINUS_ONE = [-1, 0]
+create ZERO = [0, 0]
+
+function add(a, b) {
+    return [a[0] + b[0], a[1] + b[1]]
+}
+
+function sub(a, b) {
+    return [a[0] - b[0], a[1] - b[1]]
+}
+
+function mul(a, b) {
+    return [
+        a[0] * b[0] - a[1] * b[1],
+        a[0] * b[1] + a[1] * b[0]
+    ]
+}
+
+function inv(a) {
+    create inv = 1 / sq2(a[0], a[1])
+    return [a[0] * inv, - a[1] * inv]
+}
+
+function div(a, b) {
+    return mul(a, inv(b))
+}
+
+function sq2(a, b) {
+    return a * a + b * b
+}
+
+function exp(a) {
+    create ea = math.exp(a[0])
+    return [ea * math.cos(a[1]), ea * math.sin(a[1])]
+}
+
+function sinh(a) {
+    return div(sub(exp(a), exp(neg(a))), [2, 0])
+}
+
+function cosh(a) {
+    return div(add(exp(a), exp(neg(a))), [2, 0])
+}
+
+function tanh(a) {
+    return div(sinh(a), cosh(a))
+}
+
+function sin(a) {
+    return div(sub(exp(i(a)), exp(in(a))), [0, 2])
+}
+
+function cos(a) {
+    return div(add(exp(i(a)), exp(in(a))), [2, 0])
+}
+
+function tan(a) {
+    return div(sin(a), cos(a))
+}
+
+function r(a) {
+    return [math.logHypot(a[0], a[1]), 0]
+}
+
+function theta(a) {
+    return [math.atan2(a[1], a[0]), 0]
+}
+
+function ln(a) {
+    return [r(a)[0], theta(a)[0]]
+}
+
+function i(a) {
+    return [- a[1], a[0]]
+}
+
+function in(a) {
+    return [a[1], - a[0]]
+}
+
+function conj(a) {
+    return [a[0], - a[1]]
+}
+
+function neg(a) {
+    return [- a[0], - a[1]]
+}
+
+function sqrt(a) {
+    return nrt(a, [2, 0])
+}
+
+function nrt(a, b) {
+    return pow(a, inv(b))
+}
+
+function pow(a, b) {
+    if (a[0] == 0 and a[1] == 0) {
+        if (b[1] != 0 or b[0] <= 0) {return nan}
+        return [0, 0]
+    }
+    return exp(mul(b, ln(a)))
+}
+
+function asin(a) {
+    return in(ln(add(i(a), sqrtX_ONE(a))))
+}
+
+function acos(a) {
+    return sub([math.PI() / 2, 0], asin(a))
+}
+
+function atan(a) {
+    return mul(div(I, [2, 0]), ln(div(add(I, a), sub(I, a))))
+}
+
+function hypot(a) {
+    return sqrt(add(mul(a, a), ONE))
+}
+
+function asinh(a) {
+    return ln(add(a, hypot(a)))
+}
+
+function acosh(a) {
+    return ln(add(a, mul(sqrt(add(a, ONE)), sqrt(sub(a, ONE)))))
+}
+
+function atanh(a) {
+    return mul([0.5, 0], ln(div(add(ONE, a), sub(ONE, a))))
+}
+
+function csc(a) {
+    return inv(sin(a))
+}
+
+function sec(a) {
+    return inv(cos(a))
+}
+
+function cot(a) {
+    return inv(tan(a))
+}
+
+function acsc(a) {
+    return asin(inv(a))
+}
+
+function asec(a) {
+    return acos(inv(a))
+}
+
+function acot(a) {
+    return atan(inv(a))
+}
+
+function csch(a) {
+    return inv(sinh(a))
+}
+
+function sech(a) {
+    return inv(cosh(a))
+}
+
+function coth(a) {
+    return inv(tanh(a))
+}
+
+function acsch(a) {
+    return asinh(inv(a))
+}
+
+function asech(a) {
+    return acosh(inv(a))
+}
+
+function acoth(a) {
+    return atanh(inv(a))
+}
+
+function logn(a, b) {
+    return div(ln(a), ln(b))
+}
+
+function log(a) {
+    return logn(a, [10, 0])
+}
+
+function sqrtX_ONE(a) {
+    return sqrt(sub(pow(a, [2, 0]), [1, 0]))
+}
+
+function a(f, x) {
+    return f(x)
+}
+
+function f(x) {
+    return x
+}
