@@ -1,0 +1,6 @@
+Funções:
+
+compare(a, b, eps, nome)
+
+Basicamente ela só verifica se a = b para uma tolerância eps, mostra o nome do teste se der certo, também se falhar
+Ele para a execução de falhar, mostrando exatamente onde ocorreu o erro
