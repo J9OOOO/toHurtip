@@ -154,6 +154,20 @@ function pushMut(array, arg) {
     array[array.length] = arg
 }
 
+function dup(array, arg) {
+    if (indexOf(array, arg) != lastIndexOf(array, arg)) {return true}
+    return false
+}
+
+function someDup(array) {
+    create i = 0
+    while(i < array.length) {
+        if (dup(array, array[i])) {return true}
+        i = i + 1
+    }
+    return false
+}
+
 function nada() {
     create i = 0
     while(i < array.length) {
@@ -161,5 +175,7 @@ function nada() {
         i = i + 1
     }
 }
+
+//view("a" == "a")
 
 //Hurtip não tem uma estrutura básica para a manipulação de Arrays, mas eu corrigi a atribuição de índices, agora dá para fazer mais coisa
