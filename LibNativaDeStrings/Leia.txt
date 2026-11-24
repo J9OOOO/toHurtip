@@ -1,0 +1,60 @@
+Basicamente eu implementei uma biblioteca "nativa" de strings para o Hurtip, para adicionar é meio simples:
+Abra:
+src/libraries/
+Cole o string.cpp nele
+Vá para:
+include\hurtip\libraries\
+Adicione esse código na pasta com o nome de "string.hpp":
+
+#pragma once
+
+#include "hurtip/interpreter/interpreter.hpp"
+
+namespace hurtip
+{
+    void registerStringLibrary(Interpreter &interpreter);
+}
+
+Vá para:
+src\libraries\standard_library.cpp
+
+Provavelmente vai estar assim:
+#include "hurtip/libraries/standard_library.hpp"
+#include "hurtip/libraries/math.hpp"
+
+namespace hurtip
+{
+    void registerStandardLibraries(Interpreter &interpreter)
+    {
+        registerMathLibrary(interpreter);
+    }
+}
+
+
+Simplesmente coloque no início:
+
+#include "hurtip/libraries/string.hpp"
+
+E dentro do "void registerStandardLibraries(Interpreter &interpreter)":
+
+registerStringLibrary(interpreter);
+
+Faça:
+
+cd C:\Users\"SEU_USUARIO"\caminho_ate_a_pasta\Hurtip-main>
+
+Depois:
+
+cmake --build build --config Release
+
+Se der algum erro de compilação, provavelmente você fez algo errado, se não, é apenas você fazer:
+
+import "string"
+
+E vai conseguir realizar coisas como:
+
+view(string.startsWith("wu9df", "wu9df"))
+
+Obs:
+Essa NÃO é a biblioteca original do Hurtip, apenas uma implementação funções de strings enquanto isso não existe na língua ainda, então se quebrar, não usa a biblioteca
+É melhor faltar do que não ter o resto que ainda sobra
