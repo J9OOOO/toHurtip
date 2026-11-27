@@ -61,6 +61,9 @@ Depois, vá para CMakeLists.txt e bote:
 Em:
 add_executable(hurtip
 
+E em CMakeLists dentro do tests também (há 2)
+Só fazer a mesma coisa que eu falei
+
 Obs:
 Essa NÃO é a biblioteca original do Hurtip, apenas uma implementação funções de strings enquanto isso não existe na língua ainda, então se quebrar, não usa a biblioteca
 É melhor faltar do que não ter o resto que ainda sobra
