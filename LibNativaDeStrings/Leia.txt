@@ -55,6 +55,12 @@ E vai conseguir realizar coisas como:
 
 view(string.startsWith("wu9df", "wu9df"))
 
+Depois, vá para CMakeLists.txt e bote:
+    src/libraries/string.cpp
+
+Em:
+add_executable(hurtip
+
 Obs:
 Essa NÃO é a biblioteca original do Hurtip, apenas uma implementação funções de strings enquanto isso não existe na língua ainda, então se quebrar, não usa a biblioteca
 É melhor faltar do que não ter o resto que ainda sobra
