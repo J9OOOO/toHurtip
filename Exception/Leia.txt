@@ -1,0 +1,45 @@
+Funções:
+
+throwError(a, b, c)
+Explicação:
+
+a = Array de mensagens
+Por exemplo:
+throwError(["Limite: ", 100, "Obtido: ", 1000], 0, "erro de Array acima do limite")
+Vai gerar:
+
+Hurtip Error: Line 2: Division by zero
+  Exceção do tipo: **** erro de Array acima do limite ****
+  Mensagem de erro: 
+  {
+       Limite: 
+       100
+       Obtido: 
+       1000
+  }
+
+b = espaçamento entre cada índice do Array
+Se b = 1:
+Hurtip Error: Line 2: Division by zero
+  Exceção do tipo: **** erro de Array acima do limite ****
+  Mensagem de erro: 
+  {
+       Limite: 
+
+       100
+
+       Obtido: 
+
+       1000
+
+  }
+
+
+c = mensagem de erro
+Literalmente isso:
+throwError([], 0, "teste do erro")
+Hurtip Error: Line 2: Division by zero
+  Exceção do tipo: **** teste do erro ****
+  Mensagem de erro: 
+  {
+  }
