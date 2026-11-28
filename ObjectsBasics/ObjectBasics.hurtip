@@ -1,21 +1,15 @@
 load "Arrays.hurtip" as Array
-
-function explodir() {
-    return 1 / 0
-}
+load "Exception.hurtip" as Exp
 
 function objectCreate(nomes, valores) {
     if (nomes.length != valores.length) {
-        view("Objeto inválido")
-        explodir()
+        Exp.throwError(["As propriedades e os valores não tem tamanhos iguais", "Tamanho das propriedades: ", nomes.length, "", "Tamanho dos valores: ", valores.length], 0, "Objeto inválido")
     }
     if (Array.includes(nomes, "NotAProp")){
-        view("Há um nome inválido inválido")
-        explodir()
+        Exp.throwError(["Por favor, remova essa propriedade ou troque de nome"], 0, "Há uma propriedade com o nome 'NotAProp'. Nome que é inválido")
     }
     if (Array.someDup(nomes)) {
-        view("Há valores duplicados")
-        explodir()
+        Exp.throwError(["Por favor, remova uma das propriedades ou altere o nome dela"], 0, "Há propriedades duplicados")
     }
     create i = 0
     create j = 0
@@ -29,10 +23,14 @@ function objectCreate(nomes, valores) {
     return Obj
 }
 
+function ObjC(nomes, valores) {
+    return objectCreate(nomes, valores)
+    //apenas uma forma de escrever mais veloz, sem destruir a compatibilidade
+}
+
 function val(obj, nome) {
     if (nome == "NotAProp") {
-        view("Nome inválido")
-        explodir()
+        Exp.excecaoSimples("Por favor, não tente encontrar o valor dessa propriedade", "Nome inválido para propriedade (NotAProp)")
     }
     create i = 0
     while(i < obj.length) {
@@ -41,8 +39,7 @@ function val(obj, nome) {
         }
         i = i + 2
     }
-    view("Não existe valor para: ", nome)
-    explodir()
+    Exp.throwError(["Propriedade inexistente: ", nome], 0, "Não há a propriedade escolhida")
 }
 
 function exists(obj, nome) {
@@ -56,20 +53,24 @@ function exists(obj, nome) {
 
 function mutVal(obj, nome, valor) {
     if (nome == "NotAProp") {
-        view("Nome inválido")
-        explodir()
+        Exp.excecaoSimples("Por favor, não tente alterar o valor dessa propriedade", "Nome inválido para propriedade (NotAProp)")
     }
     create lugar = posNome(obj, nome)
+    if (lugar == -1) {
+        Exp.throwError([nome], 0, "Propriedade inexistente: ")
+    }
     obj[lugar + 1] = valor
 }
 
 function mutProp(obj, nome, nomeNovo) {
     verificar(nome)
-    if (Array.includes(obj, nome)) {
-        view("Já existe algo com esse nome")
-        explodir()
+    if (Array.includes(obj, nomeNovo)) {
+        Exp.throwError(["Nome já existente: ", nome], 0, "Já existe algo com esse nome")
     }
     create lugar = posNome(obj, nome)
+    if (lugar == -1) {
+        Exp.throwError([nome], 0, "Propriedade inexistente: ")
+    }
     obj[lugar] = nomeNovo
 }
 
@@ -84,6 +85,9 @@ function posNome(obj, nome) {
 
 function addProp(obj, nome, valor) {
     verificar(nome)
+    if (Array.includes(obj, nome)) {
+        Exp.throwError(["Nome já existente: ", nome], 0, "Já existe algo com esse nome")
+    }
     create tamanho = obj.length
     obj[tamanho] = nome
     obj[tamanho + 1] = valor
@@ -91,6 +95,9 @@ function addProp(obj, nome, valor) {
 
 function removeProp(obj, nome) {
     create lugar = posNome(obj, nome)
+    if (lugar == -1) {
+        Exp.throwError([nome], 0, "Propriedade inexistente: ")
+    }
     obj[lugar] = "NotAProp"
 }
 
@@ -106,9 +113,8 @@ function copy(obj) {
 }
 
 function verificar(a) {
-    if (nome == "NotAProp") {
-        view("Nome inválido")
-        explodir()
+    if (a == "NotAProp") {
+        Exp.excecaoSimples("Por favor, não tente fazer algo com essa propriedade", "Nome inválido para propriedade (NotAProp)")
     }
 }
 
@@ -117,10 +123,34 @@ function print(obj) {
     view("{")
     while (i < obj.length) {
         if (obj[i] == "NotAProp") {i = i + 2}
-        view(obj[i], ":", obj[i + 1])
+        if (i < obj.length) {view("  ", obj[i], ":", obj[i + 1])}
         i = i + 2
     }
     view("}")
 }
 
-//create z = objectCreate(["real", "imag"], [2, 3])
+function instanceof(obj, obj2) {
+    if (obj.length != obj2.length and not Array.includes(obj, "NotAProp") and not Array.includes(obj2, "NotAProp")) {return false}
+    create i = 0
+    while (i < obj.length) {
+        if (i < obj2.length and not Array.includes(obj, obj2[i]) and obj2[i] != NotAProp) {return false}
+        i = i + 2
+    }
+    return true
+}
+
+function PropExist(obj, prop) {
+    create lugar = posNome(obj, nome)
+    if (lugar == -1) {return false}
+    return true
+}
+
+function strincInstanceOf(obj, obj2) {
+    if (obj.length != obj2.length) {return false}
+    create i = 0
+    while (i < obj.length) {
+        if (obj[i] != obj2[i]) {return false}
+        i = i + 2
+    }
+    return true
+}
