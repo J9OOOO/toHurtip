@@ -1,4 +1,4 @@
-load "Objetos.hurtip" as obj
+load "ObjectsBasics.hurtip" as obj
 
 create ZERO = obj.objectCreate(["real", "imag"], [0, 0])
 
@@ -13,3 +13,11 @@ function add(z, w) {
 function sub(z, w) {
     return Co(obj.val(z, "real") - obj.val(w, "real"), obj.val(z, "imag") - obj.val(w, "imag"))
 }
+
+function Co(a, b) {
+    return obj.objectCreate(["real", "imag"], [a, b])
+}
+
+create z = Co(1, 2)
+
+obj.print(add(z, z))
