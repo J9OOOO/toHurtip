@@ -1,6 +1,3 @@
-Função:
-explodir()	Provoca uma falha de execução para interromper operações inválidas.
-
 objectCreate(nomes, valores)	
 Cria um objeto a partir de dois arrays: um contendo os nomes das propriedades e outro contendo seus respectivos valores. Verifica tamanhos diferentes, nomes inválidos e duplicados.
 
@@ -33,3 +30,12 @@ Verifica se um identificador é válido, impedindo o uso do nome reservado NotAP
 
 print(obj)	
 Exibe o objeto em formato textual, ignorando propriedades removidas.
+
+ObjC(nomes, valores):
+Uma forma mais simplificada para escrever "objectCreate"
+
+strictInstanceof(obj, obj2):
+Um instanceof que compara a exatidão entre as propriedades, contando até as removidas
+
+PropExists(obj, prop):
+Diz se a propriedade existe no objeto
